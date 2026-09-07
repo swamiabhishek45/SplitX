@@ -29,26 +29,26 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="mx-auto max-w-4xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24 sm:pb-16">
-          <h1 className="mx-auto max-w-3xl text-4xl font-medium leading-[1.25] tracking-tight sm:text-5xl">
+        <section className="mx-auto max-w-4xl px-4 pt-10 pb-10 text-center sm:px-6 sm:pt-24 sm:pb-16">
+          <h1 className="mx-auto max-w-3xl text-[1.75rem] font-medium leading-[1.2] tracking-tight sm:text-5xl sm:leading-[1.25]">
             From one image to a seamless carousel.
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground sm:mt-6 sm:text-lg">
             Split one wide image into 2, 3, or 4 perfectly aligned slides for X.
           </p>
-          <div className="mt-10">
-            <Button size="lg" asChild>
+          <div className="mt-8 sm:mt-10">
+            <Button size="lg" className="w-full max-w-xs sm:w-auto" asChild>
               <Link href="/editor">Make your slideshow</Link>
             </Button>
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6 sm:pb-28">
+        <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-6 sm:pb-28">
           <HeroSplitDemo />
         </section>
 
         <section className="border-t border-border/60">
-          <div className="mx-auto grid max-w-5xl gap-8 px-4 py-16 sm:grid-cols-3 sm:gap-12 sm:px-6 sm:py-20">
+          <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:grid-cols-3 sm:gap-12 sm:px-6 sm:py-20">
             {STEPS.map((step) => (
               <div key={step.number} className="space-y-3">
                 <span className="text-sm font-medium text-muted-foreground/60">

@@ -20,31 +20,48 @@ import {
 } from "@/lib/types";
 
 interface SegmentedControlProps<T extends string | number> {
-  options: { value: T; label: string }[];
+  options: { value: T; label: string; shortLabel?: string }[];
   value: T;
   onChange: (value: T) => void;
+  layout?: "row" | "grid";
 }
 
 function SegmentedControl<T extends string | number>({
   options,
   value,
   onChange,
+  layout = "row",
 }: SegmentedControlProps<T>) {
   return (
-    <div className="flex rounded-lg border border-border p-1">
+    <div
+      className={cn(
+        "rounded-lg border border-border p-1",
+        layout === "grid"
+          ? "grid grid-cols-2 gap-1 sm:flex sm:gap-0"
+          : "flex"
+      )}
+    >
       {options.map((option) => (
         <button
           key={String(option.value)}
           type="button"
           onClick={() => onChange(option.value)}
           className={cn(
-            "flex-1 rounded-md px-3 py-1.5 text-xs font-medium transition-all duration-200",
+            "rounded-md px-2 py-2 text-[11px] font-medium transition-all duration-200 sm:px-3 sm:py-1.5 sm:text-xs",
+            layout === "row" && "flex-1",
             value === option.value
               ? "bg-foreground text-background shadow-sm"
               : "text-muted-foreground hover:text-foreground"
           )}
         >
-          {option.label}
+          {option.shortLabel ? (
+            <>
+              <span className="sm:hidden">{option.shortLabel}</span>
+              <span className="hidden sm:inline">{option.label}</span>
+            </>
+          ) : (
+            option.label
+          )}
         </button>
       ))}
     </div>
@@ -97,9 +114,9 @@ export function SplitControls({
           <Label className="text-xs text-muted-foreground">Number of slides</Label>
           <SegmentedControl
             options={[
-              { value: 2 as SlideCount, label: "2 slides" },
-              { value: 3 as SlideCount, label: "3 slides" },
-              { value: 4 as SlideCount, label: "4 slides" },
+              { value: 2 as SlideCount, label: "2 slides", shortLabel: "2" },
+              { value: 3 as SlideCount, label: "3 slides", shortLabel: "3" },
+              { value: 4 as SlideCount, label: "4 slides", shortLabel: "4" },
             ]}
             value={slideCount}
             onChange={onSlideCountChange}
@@ -109,6 +126,7 @@ export function SplitControls({
         <div className="space-y-2">
           <Label className="text-xs text-muted-foreground">Slide shape</Label>
           <SegmentedControl
+            layout="grid"
             options={(
               Object.keys(ASPECT_RATIO_DIMENSIONS) as AspectRatio[]
             ).map((ratio) => ({
@@ -185,7 +203,8 @@ export function SplitControls({
         <div className="flex flex-wrap gap-2">
           <Button variant="ghost" size="sm" onClick={onResetFraming}>
             <RotateCcw className="h-3.5 w-3.5" />
-            Reset framing
+            <span className="sm:hidden">Reset</span>
+            <span className="hidden sm:inline">Reset framing</span>
           </Button>
           <Button variant="ghost" size="sm" onClick={onToggleCropLines}>
             {hideCropLines ? (
@@ -193,7 +212,12 @@ export function SplitControls({
             ) : (
               <Eye className="h-3.5 w-3.5" />
             )}
-            {hideCropLines ? "Show crop lines" : "Hide crop lines"}
+            <span className="sm:hidden">
+              {hideCropLines ? "Show lines" : "Hide lines"}
+            </span>
+            <span className="hidden sm:inline">
+              {hideCropLines ? "Show crop lines" : "Hide crop lines"}
+            </span>
           </Button>
           <Button
             variant="ghost"
@@ -202,7 +226,8 @@ export function SplitControls({
             className="text-destructive hover:text-destructive"
           >
             <Trash2 className="h-3.5 w-3.5" />
-            Remove image
+            <span className="sm:hidden">Remove</span>
+            <span className="hidden sm:inline">Remove image</span>
           </Button>
         </div>
       </section>

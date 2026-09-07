@@ -75,25 +75,28 @@ export function UploadArea({
 
   if (sourceImage) {
     return (
-      <div className="rounded-xl border border-border bg-muted/30 p-4">
-        <div className="flex items-center gap-4">
-          <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border border-border bg-background">
-            <img
-              src={sourceImage.url}
-              alt="Uploaded preview"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium">{sourceImage.name}</p>
-            <p className="text-xs text-muted-foreground">
-              {sourceImage.width} × {sourceImage.height} px
-            </p>
+      <div className="rounded-xl border border-border bg-muted/30 p-3 sm:p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+            <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border border-border bg-background sm:h-16 sm:w-24">
+              <img
+                src={sourceImage.url}
+                alt="Uploaded preview"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium">{sourceImage.name}</p>
+              <p className="text-xs text-muted-foreground">
+                {sourceImage.width} × {sourceImage.height} px
+              </p>
+            </div>
           </div>
           <Button
             variant="secondary"
             size="sm"
             onClick={() => inputRef.current?.click()}
+            className="w-full shrink-0 sm:w-auto"
           >
             <RefreshCw className="h-3.5 w-3.5" />
             Replace
@@ -126,7 +129,7 @@ export function UploadArea({
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
         className={cn(
-          "flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-10 transition-all duration-200",
+          "flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-4 py-8 transition-all duration-200 sm:min-h-[180px] sm:px-6 sm:py-10",
           isDragging
             ? "border-foreground bg-muted/50 scale-[1.01]"
             : "border-border hover:border-foreground/30 hover:bg-muted/20"
@@ -207,7 +210,7 @@ export function EmptyUploadState({
   }, [handlePaste]);
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center px-4 py-16">
+    <div className="flex flex-1 flex-col items-center justify-center px-4 py-10 sm:py-16">
       <div
         role="button"
         tabIndex={0}
@@ -226,7 +229,7 @@ export function EmptyUploadState({
           handleFiles(e.dataTransfer.files);
         }}
         className={cn(
-          "flex w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-8 py-16 transition-all duration-200",
+          "flex w-full max-w-lg cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-12 transition-all duration-200 sm:px-8 sm:py-16",
           isDragging
             ? "border-foreground bg-muted/50"
             : "border-border hover:border-foreground/30 hover:bg-muted/20"

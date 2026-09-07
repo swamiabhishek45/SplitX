@@ -49,8 +49,8 @@ export function Editor() {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main className="flex flex-1 flex-col">
-          <div className="mx-auto w-full max-w-3xl px-4 py-12 text-center sm:px-6">
-            <h1 className="text-3xl font-medium leading-[1.25] tracking-tight sm:text-4xl">
+          <div className="mx-auto w-full max-w-3xl px-4 py-8 text-center sm:px-6 sm:py-12">
+            <h1 className="text-2xl font-medium leading-[1.25] tracking-tight sm:text-4xl">
               Split an image
             </h1>
             <p className="mt-3 text-muted-foreground">
@@ -73,9 +73,9 @@ export function Editor() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
-          <div className="grid gap-10 lg:grid-cols-[380px_1fr] lg:gap-12">
-            <aside className="space-y-8">
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-8 lg:py-12">
+          <div className="grid gap-8 lg:grid-cols-[380px_1fr] lg:gap-12">
+            <aside className="order-2 space-y-6 sm:space-y-8 lg:order-1">
               <section className="space-y-4">
                 <div>
                   <h2 className="text-base font-semibold">1. Add your image</h2>
@@ -112,7 +112,7 @@ export function Editor() {
               />
             </aside>
 
-            <div className="min-w-0">
+            <div className="order-1 min-w-0 lg:order-2">
               <PreviewPanel
                 slides={slides}
                 slideCount={settings.slideCount}

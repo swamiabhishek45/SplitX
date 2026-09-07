@@ -136,15 +136,20 @@ export function HeroSplitDemo() {
         )}
       </div>
 
-      <div className="flex items-center justify-between gap-4 px-5 py-4">
-        <p className="text-sm text-muted-foreground">
+      <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5">
+        <p className="text-center text-sm text-muted-foreground sm:text-left">
           {isSplit
             ? "Three equal parts. On X they scroll as one picture."
             : "This is the whole image. Try it."}
         </p>
 
         {isSplit ? (
-          <Button variant="ghost" size="sm" onClick={replay}>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={replay}
+            className="w-full sm:w-auto"
+          >
             <RotateCcw className="h-3.5 w-3.5" />
             Replay
           </Button>
@@ -154,6 +159,7 @@ export function HeroSplitDemo() {
             size="sm"
             onClick={startSplit}
             disabled={isCutting}
+            className="w-full sm:w-auto"
           >
             <Scissors className="h-3.5 w-3.5" />
             Split it
