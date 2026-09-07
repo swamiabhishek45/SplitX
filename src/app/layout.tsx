@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
@@ -44,6 +45,11 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          strategy="afterInteractive"
+          data-cf-beacon='{"token": "e52521780f894960af81b3051651d0d8"}'
+        />
       </body>
     </html>
   );
