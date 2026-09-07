@@ -10,10 +10,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SplitX — Turn one image into a seamless X carousel",
+  title: "SplitX — From one image to a seamless carousel",
   description:
     "Split one wide image into 2, 3, or 4 perfectly aligned slides for posting as an X/Twitter carousel. Free, private, browser-based.",
-  icons: { icon: "/logo.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

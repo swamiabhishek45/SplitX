@@ -30,13 +30,11 @@ export default function HomePage() {
       <Header />
       <main className="flex-1">
         <section className="mx-auto max-w-4xl px-4 pt-16 pb-12 text-center sm:px-6 sm:pt-24 sm:pb-16">
-          <h1 className="text-4xl font-medium leading-[1.25] tracking-tight sm:text-5xl">
-            Ride the trend.
-            <br />
-            Post your hat-trick.
+          <h1 className="mx-auto max-w-3xl text-4xl font-medium leading-[1.25] tracking-tight sm:text-5xl">
+            From one image to a seamless carousel.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-            Turn one wide image into 2, 3, or 4 seamless slides for X.
+            Split one wide image into 2, 3, or 4 perfectly aligned slides for X.
           </p>
           <div className="mt-10">
             <Button size="lg" asChild>
